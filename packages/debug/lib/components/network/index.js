@@ -1,15 +1,19 @@
+"use strict";
+
 Component({
   data: {
-    logs: [],
+    logs: []
   },
   lifetimes: {
     attached() {
       this.setData({
-        logs: [],
+        logs: []
       });
-    },
+    }
+
   },
   methods: {
-    handleClear() {},
-  },
+    handleClear() {}
+
+  }
 });

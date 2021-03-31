@@ -1,12 +1,11 @@
-import NetworkProxy from "./network";
-
 let started = false;
 
 export function start() {
-  started = true;
+  if (started) {
+    return;
+  }
 
-  const networkProxy = new NetworkProxy();
-  networkProxy.createProxy();
+  started = true;
 }
 
 export function isStarted() {

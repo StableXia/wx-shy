@@ -10,20 +10,6 @@ const buildConfig = {
     copySrc: ["packages/debug/src/**/*.{wxml,json}"],
     dest: "packages/debug/lib",
   },
-  debugUI: {
-    name: "debugUI",
-    options: {
-      base: "packages/debug-ui/src",
-      allowEmpty: true,
-    },
-    scriptsSrc: "packages/debug-ui/src/**/*.js",
-    lessSrc: [
-      "packages/debug-ui/src/**/*.less",
-      "!packages/debug-ui/src/less/*.*",
-    ],
-    copySrc: ["packages/debug-ui/src/**/*.{wxml,json}"],
-    dest: "packages/debug-ui/lib",
-  },
 };
 
 let buildTasks = [];

@@ -1,6 +1,6 @@
 import RequestQueue from "./requestQueue";
 import { NETWORK_CALLEE } from "./constants";
-import { isObject } from "./utils";
+import { isObject } from "../utils";
 
 const requestQueue = new RequestQueue();
 
@@ -9,12 +9,11 @@ function proxyHandler(networkCalleeType, networkFun, payload) {
   const proxyOpts = Object.assign({}, requestOpts);
 
   proxyOpts.success = (res) => {
-    console.log("success/////////////////", res);
-    // requestQueue.add({
-    //   networkCalleeType,
-    //   request: requestOpts,
-    //   response: res,
-    // });
+    requestQueue.add({
+      networkCalleeType,
+      request: requestOpts,
+      response: res,
+    });
 
     if (typeof requestOpts.success === "function") {
       requestOpts.success(res);
@@ -22,8 +21,6 @@ function proxyHandler(networkCalleeType, networkFun, payload) {
   };
 
   proxyOpts.fail = (err) => {
-    console.count("fail");
-    console.log("fail/////////////////", err);
     requestQueue.add({
       networkCalleeType,
       request: requestOpts,
