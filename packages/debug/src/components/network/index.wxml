@@ -1,0 +1,13 @@
+<view class="debug-network">
+    <layout>
+        <text slot="header" bindtap="handleClear">clear</text>
+    </layout>
+    <view class="debug-network__body">
+        <view wx:for="{{logs}}" wx:key="index" class="debug-network__item">
+            <view>
+                <text>{{item.general.requestUrl}}</text>
+                <text>{{item.general.statusCode}} {{logs.length}}</text>
+            </view>
+        </view>
+    </view>
+</view>

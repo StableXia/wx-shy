@@ -1,0 +1,30 @@
+{
+  "name": "@wx-shy/debug",
+  "version": "0.0.1",
+  "description": "wx debug",
+  "keywords": [
+    "wx",
+    "debug"
+  ],
+  "author": "Wen Xia",
+  "homepage": "https://github.com/xiaotangdou/wx-shy/tree/master/packages/debug#readme",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiaotangdou/wx-shy.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/xiaotangdou/wx-shy/issues"
+  }
+}
