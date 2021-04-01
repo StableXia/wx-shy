@@ -48,11 +48,11 @@ function proxyHandler(networkCalleeType, networkFun, payload) {
 
 class NetworkProxy {
   constructor() {
-    this.networkCallee = _constants.NETWORK_CALLEE;
+    this._networkCallee = _constants.NETWORK_CALLEE;
   }
 
   createProxy() {
-    this.networkCallee.forEach(method => {
+    this._networkCallee.forEach(method => {
       const networkFun = wx[method];
       Object.defineProperty(wx, method, {
         get: () => payload => proxyHandler(method, networkFun, payload)

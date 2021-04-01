@@ -17,6 +17,7 @@
   "files": [
     "lib"
   ],
+  "miniprogram": "lib",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/xiaotangdou/wx-shy.git"

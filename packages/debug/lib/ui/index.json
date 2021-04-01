@@ -1,0 +1,5 @@
+{
+    "usingComponents": {
+      "debug": "./debug"
+    }
+  }
