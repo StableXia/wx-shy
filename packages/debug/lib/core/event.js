@@ -3,9 +3,14 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.default = exports.EVENT_TYPE = void 0;
 
 var _utils = require("./utils");
+
+const EVENT_TYPE = {
+  close_debug_page: 1
+};
+exports.EVENT_TYPE = EVENT_TYPE;
 
 class Event {
   constructor() {

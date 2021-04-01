@@ -1,11 +1,9 @@
-import wxDebug from "@wx-debug/debug";
-
-const { event, EVENT_TYPE } = wxDebug;
+import { eventBus, EVENT_TYPE } from "@wx-shy/debug";
 
 Component({
   methods: {
     handleClose() {
-      event.emit(EVENT_TYPE.close_debug_page);
+      eventBus.emit(EVENT_TYPE.close_debug_page);
     },
   },
 });

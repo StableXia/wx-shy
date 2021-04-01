@@ -1,0 +1,6 @@
+.debug-layout__header {
+  padding: 8rpx 16rpx;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+}

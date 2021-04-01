@@ -1,15 +1,7 @@
 "use strict";
 
-var _debug = _interopRequireDefault(require("@wx-debug/debug"));
+var _debug = require("@wx-shy/debug");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const {
-  env,
-  utils,
-  event,
-  EVENT_TYPE
-} = _debug.default;
 Component({
   data: {
     envList: [],
@@ -17,9 +9,12 @@ Component({
   },
   lifetimes: {
     attached() {
-      let envList = env.getEnv();
-      envList = utils.isObject(envList) ? Object.keys(envList) : [];
-      const currentEnv = env.getCurrentEnv();
+      let envList = _debug.env.getEnv();
+
+      envList = _debug.utils.isObject(envList) ? Object.keys(envList) : [];
+
+      const currentEnv = _debug.env.getCurrentEnv();
+
       this.setData({
         envList,
         currentEnv: envList.findIndex(env => env === currentEnv)
@@ -35,8 +30,9 @@ Component({
     },
 
     handleSave() {
-      env.setCurrentEnv(this.data.envList[this.data.currentEnv]);
-      event.emit(EVENT_TYPE.close_debug_page);
+      _debug.env.setCurrentEnv(this.data.envList[this.data.currentEnv]);
+
+      _debug.eventBus.emit(_debug.EVENT_TYPE.close_debug_page);
     }
 
   }

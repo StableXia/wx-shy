@@ -1,7 +1,6 @@
 {
     "component": true,
     "usingComponents": {
-        "debug-setting": "../setting",
-        "debug-network": "../network"
+        "close": "../close"
     }
 }

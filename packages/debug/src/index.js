@@ -1,9 +1,10 @@
-import NetworkProxy from "./core/network";
-import Event from "./core/event";
+import NetworkProxy from "./core/network/index";
+import Event, { EVENT_TYPE } from "./core/event";
 export * from "./core/env";
 
 export const networkProxy = new NetworkProxy();
 export const eventBus = new Event();
+export { EVENT_TYPE };
 
 let started = false;
 export function start() {

@@ -1,6 +1,4 @@
-import wxDebug from "@wx-debug/debug";
-
-const { env, utils, event, EVENT_TYPE } = wxDebug;
+import { env, utils, eventBus, EVENT_TYPE } from "@wx-shy/debug";
 
 Component({
   data: {
@@ -27,7 +25,7 @@ Component({
     },
     handleSave() {
       env.setCurrentEnv(this.data.envList[this.data.currentEnv]);
-      event.emit(EVENT_TYPE.close_debug_page);
+      eventBus.emit(EVENT_TYPE.close_debug_page);
     },
   },
 });

@@ -1,18 +1,9 @@
-<view class="debug-wrapper" wx:if="{{debugLaunch}}">
-    <view id="__debug__" style="left: {{position.left}}px; top: {{position.top}}px" class="debug-lancher" catchtouchmove="handleTouchMove" bindtap="handleShowModal">
-        debug
+<view class="debug-layout">
+    <view class="debug-layout__header">
+        <close></close>
+        <slot name="header"></slot>
     </view>
-    <view class="debug-modal animated {{animateClassName.fade}} {{animateClassName.slide}}" wx:if="{{showModal}}">
-        <view class="debug-modal__inner">
-            <view class="debug-modal__body">
-                <debug-setting wx:if="{{activeTab === TABS_MAP.SETTING}}"></debug-setting>
-                <debug-network wx:elif="{{activeTab === TABS_MAP.NETWORK}}"></debug-network>
-            </view>
-            <view class="debug-modal__footer">
-                <button wx:for="{{tabs}}" wx:key="key" data-type="{{item.key}}" bindtap="handleClickTab" type="{{item.key === activeTab ? 'primary' : 'default'}}">
-                    {{item.label}}
-                </button>
-            </view>
-        </view>
+    <view class="debug-layout__body">
+        <slot></slot>
     </view>
 </view>

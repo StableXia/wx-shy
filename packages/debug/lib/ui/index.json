@@ -1,5 +1,5 @@
 {
     "usingComponents": {
-      "debug": "./debug"
+      "debug": "./index"
     }
   }

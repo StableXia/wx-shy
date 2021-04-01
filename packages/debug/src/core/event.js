@@ -1,5 +1,9 @@
 import { isObject } from "./utils";
 
+export const EVENT_TYPE = {
+  close_debug_page: 1,
+};
+
 export default class Event {
   constructor() {
     this._fns = {};
