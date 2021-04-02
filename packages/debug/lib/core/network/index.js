@@ -15,13 +15,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 const requestQueue = new _requestQueue.default();
 
-function proxyHandler(networkCalleeType, networkFun, payload) {
+function proxyHandler(networkFun, payload) {
   const requestOpts = (0, _utils.isObject)(payload) ? payload : {};
   const proxyOpts = Object.assign({}, requestOpts);
 
   proxyOpts.success = res => {
     requestQueue.add({
-      networkCalleeType,
       request: requestOpts,
       response: res
     });
@@ -33,7 +32,6 @@ function proxyHandler(networkCalleeType, networkFun, payload) {
 
   proxyOpts.fail = err => {
     requestQueue.add({
-      networkCalleeType,
       request: requestOpts,
       response: err
     });
@@ -55,7 +53,7 @@ class NetworkProxy {
     this._networkCallee.forEach(method => {
       const networkFun = wx[method];
       Object.defineProperty(wx, method, {
-        get: () => payload => proxyHandler(method, networkFun, payload)
+        get: () => payload => proxyHandler(networkFun, payload)
       });
     });
   }

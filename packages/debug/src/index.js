@@ -1,22 +1,7 @@
-import NetworkProxy from "./core/network/index";
 import Event, { EVENT_TYPE } from "./core/event";
-export * from "./core/env";
+import * as env from "./core/env";
+import * as utils from "./core/utils";
 
-export const networkProxy = new NetworkProxy();
+export { start, isStarted, networkProxy } from "./core/init";
 export const eventBus = new Event();
-export { EVENT_TYPE };
-
-let started = false;
-export function start() {
-  if (started) {
-    return;
-  }
-
-  started = true;
-
-  networkProxy.createProxy();
-}
-
-export function isStarted() {
-  return started;
-}
+export { EVENT_TYPE, env, utils };

@@ -1,10 +1,8 @@
-<view class="debug-setting">
-    <layout>
-        <text slot="header" bindtap="handleSave">save</text>
-    </layout>
+<layout class="debug-setting">
+    <text slot="header" bindtap="handleSave">save</text>
     <view class="debug-setting__item">
         <picker range="{{envList}}" bindchange="handleOk" value="{{currentEnv}}">
             <view class="picker">当前测试环境：{{envList[currentEnv]}}</view>
         </picker>
     </view>
-</view>
+</layout>

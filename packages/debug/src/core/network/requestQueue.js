@@ -1,79 +1,19 @@
-import { NETWORK_CALLEE_TYPE } from "./constants";
-
-function formatRequestMessage(info) {
-  try {
-    const { request, response } = info;
-
-    return {
-      general: {
-        requestUrl: request.url,
-        requestMethod: request.method,
-        statusCode: request.statusCode,
-      },
-      request,
-      response,
-    };
-  } catch (error) {
-    return null;
-  }
-}
-
-function formatUploadMessage(info) {
-  try {
-    const { request, response } = info;
-
-    return {
-      general: {
-        requestUrl: request.url,
-        requestMethod: request.method,
-        statusCode: request.statusCode,
-      },
-      request,
-      response,
-    };
-  } catch (error) {
-    return null;
-  }
-}
-
-function formatDownloadMessage(info) {
-  try {
-    const { request, response } = info;
-
-    return {
-      general: {
-        requestUrl: request.url,
-        requestMethod: request.method,
-        statusCode: request.statusCode,
-      },
-      request,
-      response,
-    };
-  } catch (error) {
-    return null;
-  }
-}
-
 function formatMessages(messages) {
   try {
     return messages
-      .map((v) => {
+      .map((info) => {
         try {
-          if (v.networkCalleeType === NETWORK_CALLEE_TYPE.request) {
-            return formatRequestMessage(v);
-          }
+          const { request, response } = info;
 
-          if (v.networkCalleeType === NETWORK_CALLEE_TYPE.downloadFile) {
-            return formatUploadMessage(v);
-          }
-
-          if (v.networkCalleeType === NETWORK_CALLEE_TYPE.uploadFile) {
-            return formatDownloadMessage(v);
-          }
-
-          return null;
+          return {
+            requestUrl: request.url,
+            requestMethod: request.method,
+            statusCode: request.statusCode,
+            requestHeaders: request.headers,
+            responseHeaders: response.headers,
+            response: response,
+          };
         } catch (error) {
-          console.error(error);
           return null;
         }
       })

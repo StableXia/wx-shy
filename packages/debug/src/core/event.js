@@ -2,6 +2,7 @@ import { isObject } from "./utils";
 
 export const EVENT_TYPE = {
   close_debug_page: 1,
+  network_fetch: 2,
 };
 
 export default class Event {

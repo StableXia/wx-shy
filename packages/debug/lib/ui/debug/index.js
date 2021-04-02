@@ -49,6 +49,7 @@ Component({
         return;
       }
 
+      this.addListeners();
       debugSize = await this.getDebugSize();
       const {
         windowWidth,
@@ -64,14 +65,9 @@ Component({
           top: windowHeight - debugSize.height - 16
         }
       });
-      this.addListeners();
     },
 
     detached() {
-      if (!(0, _debug.isStarted)()) {
-        return;
-      }
-
       this.removeListeners();
     }
 

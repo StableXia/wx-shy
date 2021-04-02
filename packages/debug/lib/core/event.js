@@ -8,7 +8,8 @@ exports.default = exports.EVENT_TYPE = void 0;
 var _utils = require("./utils");
 
 const EVENT_TYPE = {
-  close_debug_page: 1
+  close_debug_page: 1,
+  network_fetch: 2
 };
 exports.EVENT_TYPE = EVENT_TYPE;
 

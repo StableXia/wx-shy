@@ -1,7 +1,77 @@
 .debug-network {
-  &__body {
+  &__item {
+    padding: 8px 0;
+    display: flex;
+    justify-content: space-between;
+
+    &__url {
+      flex: 1 1 0%;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    &__code {
+      color: #fff;
+      background-color: rgba(59, 38, 38, 0.6);
+      padding: 2px 4px;
+    }
+
+    & + & {
+      border-top: 1px solid #f0f0f0;
+    }
+  }
+}
+
+.debug-network-modal {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  position: fixed;
+  z-index: 10002;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding-bottom: constant(safe-area-inset-bottom); /* iOS < 11.2 */
+  padding-bottom: env(safe-area-inset-bottom); /* iOS >= 11.2 */
+
+  &__header {
+    padding: 8rpx 16rpx;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
   }
 
-  &__item {
+  &__close {
+    font-size: 24px;
   }
+
+  &__body {
+    flex: 1 1 0%;
+    overflow: auto;
+  }
+
+  &__block {
+    padding: 8px 0;
+
+    & + & {
+      border-top: 1px solid #f0f0f0;
+    }
+  }
+}
+
+.debug-title {
+  font-weight: bold;
+}
+
+.debug-layout {
+  display: flex;
+
+  &__flex {
+    flex: 1 1 0%;
+  }
+}
+
+.debug-break-word {
+  word-break: break-word;
 }

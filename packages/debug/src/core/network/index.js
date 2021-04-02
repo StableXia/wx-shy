@@ -4,13 +4,12 @@ import { isObject } from "../utils";
 
 const requestQueue = new RequestQueue();
 
-function proxyHandler(networkCalleeType, networkFun, payload) {
+function proxyHandler(networkFun, payload) {
   const requestOpts = isObject(payload) ? payload : {};
   const proxyOpts = Object.assign({}, requestOpts);
 
   proxyOpts.success = (res) => {
     requestQueue.add({
-      networkCalleeType,
       request: requestOpts,
       response: res,
     });
@@ -22,7 +21,6 @@ function proxyHandler(networkCalleeType, networkFun, payload) {
 
   proxyOpts.fail = (err) => {
     requestQueue.add({
-      networkCalleeType,
       request: requestOpts,
       response: err,
     });
@@ -45,7 +43,7 @@ export default class NetworkProxy {
       const networkFun = wx[method];
 
       Object.defineProperty(wx, method, {
-        get: () => (payload) => proxyHandler(method, networkFun, payload),
+        get: () => (payload) => proxyHandler(networkFun, payload),
       });
     });
   }

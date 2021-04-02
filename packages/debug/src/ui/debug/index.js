@@ -51,6 +51,8 @@ Component({
         return;
       }
 
+      this.addListeners();
+
       debugSize = await this.getDebugSize();
       const { windowWidth, windowHeight } = wx.getSystemInfoSync();
 
@@ -64,14 +66,8 @@ Component({
           top: windowHeight - debugSize.height - 16,
         },
       });
-
-      this.addListeners();
     },
     detached() {
-      if (!isStarted()) {
-        return;
-      }
-
       this.removeListeners();
     },
   },
