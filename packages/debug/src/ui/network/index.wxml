@@ -39,9 +39,10 @@
             </view>
             <view class="debug-network-modal__block">
                 <view class="debug-title">Query String Parameters</view>
-                <view wx:for="{{detail.requestParameters}}" wx:for-item="value" wx:for-index="key" wx:key="key" class="debug-layout">
-                    <view>{{key}}：</view>
-                    <view class="debug-layout__flex debug-break-word">{{value}}</view>
+                <view class="debug-layout">
+                    <view class="debug-layout__flex debug-break-word">
+                        {{detail.requestParameters}}
+                    </view>
                 </view>
             </view>
             <view class="debug-network-modal__block">

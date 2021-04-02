@@ -15,6 +15,7 @@ const DEFAULT_DETAIL = {
 function formatDetail(detail, clipboard) {
   try {
     return { ...detail,
+      requestParameters: clipboard ? JSON.parse(detail.requestParameters) : JSON.stringify(detail.requestParameters, null, 2),
       response: clipboard ? JSON.parse(detail.response) : JSON.stringify(detail.response, null, 2)
     };
   } catch (error) {
