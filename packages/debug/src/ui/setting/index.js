@@ -1,5 +1,5 @@
 import { utils, eventBus, EVENT_TYPE } from "@wx-shy/debug";
-import { getApiHost, getCurrrentApi } from "@wx-shy/app-env";
+import { getApiHost, getCurrrentApi, setCurrrentApi } from "@wx-shy/app-env";
 
 Component({
   data: {
@@ -25,7 +25,7 @@ Component({
       });
     },
     handleSave() {
-      env.setCurrentEnv(this.data.envList[this.data.currentEnv]);
+      setCurrrentApi(this.data.envList[this.data.currentEnv]);
       eventBus.emit(EVENT_TYPE.close_debug_page);
     },
   },
