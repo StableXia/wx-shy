@@ -6,6 +6,9 @@
     "wx",
     "debug"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "author": "Wen Xia",
   "homepage": "https://github.com/xiaotangdou/wx-shy/tree/master/packages/debug#readme",
   "license": "ISC",
@@ -27,5 +30,6 @@
   },
   "bugs": {
     "url": "https://github.com/xiaotangdou/wx-shy/issues"
-  }
+  },
+  "gitHead": "f4f37fb8e233106dd77fb6e22b8e9fc80c8326c6"
 }
