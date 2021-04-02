@@ -18,6 +18,7 @@ function formatMessages(messages) {
           requestMethod: request.method,
           statusCode: response.statusCode,
           requestHeaders: request.header,
+          requestParameters: request.data,
           responseHeaders: response.header,
           response: response
         };

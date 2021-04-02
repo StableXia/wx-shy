@@ -4,14 +4,17 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.getEnv = getEnv;
-exports.APP_ENV = void 0;
-const ENV_DEVELOP = "develop";
-const ENV_TRIAL = "trial";
-const ENV_RELEASE = "release";
+exports.APP_ENV = exports.APP_ENV_RELEASE = exports.APP_ENV_TRIAL = exports.APP_ENV_DEVELOP = void 0;
+const APP_ENV_DEVELOP = "develop";
+exports.APP_ENV_DEVELOP = APP_ENV_DEVELOP;
+const APP_ENV_TRIAL = "trial";
+exports.APP_ENV_TRIAL = APP_ENV_TRIAL;
+const APP_ENV_RELEASE = "release";
+exports.APP_ENV_RELEASE = APP_ENV_RELEASE;
 const APP_ENV = {
-  develop: ENV_DEVELOP,
-  trial: ENV_TRIAL,
-  release: ENV_RELEASE
+  develop: APP_ENV_DEVELOP,
+  trial: APP_ENV_TRIAL,
+  release: APP_ENV_RELEASE
 };
 exports.APP_ENV = APP_ENV;
 
@@ -36,6 +39,6 @@ function getEnvByAccountInfo() {
  */
 
 
-function getEnv(defaultEnv = ENV_RELEASE) {
+function getEnv(defaultEnv = APP_ENV_RELEASE) {
   return getEnvByWxConfig() || getEnvByAccountInfo() || defaultEnv;
 }

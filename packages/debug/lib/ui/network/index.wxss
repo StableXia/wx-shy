@@ -1,5 +1,5 @@
 .debug-network__item {
-  padding: 8px 0;
+  padding: 4px 0;
   display: flex;
   justify-content: space-between;
 }
@@ -32,10 +32,11 @@
   /* iOS >= 11.2 */
 }
 .debug-network-modal__header {
-  padding: 8rpx 16rpx;
+  padding: 4px 8px;
   border-bottom: 1px solid #f0f0f0;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .debug-network-modal__close {
   font-size: 24px;
@@ -43,6 +44,7 @@
 .debug-network-modal__body {
   flex: 1 1 0%;
   overflow: auto;
+  padding: 4px 8px;
 }
 .debug-network-modal__block {
   padding: 8px 0;

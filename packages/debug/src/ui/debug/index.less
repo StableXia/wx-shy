@@ -1,11 +1,11 @@
 .debug-wrapper {
   .debug-lancher {
-    padding: 8rpx 16rpx;
+    padding: 4px 8px;
     position: fixed;
     width: auto;
     color: #fff;
     background-color: rgba(59, 38, 38, 0.6);
-    border-radius: 4rpx;
+    border-radius: 4px;
     z-index: 10001;
   }
 
@@ -27,15 +27,19 @@
     }
 
     &__body {
-      padding: 8rpx 16rpx;
+      padding: 4px 8px;
       flex: 1 1 0%;
       overflow: auto;
     }
 
     &__footer {
-      padding: 8rpx 16rpx;
+      padding: 4px 8px;
       border-top: 1px solid #f0f0f0;
       display: flex;
+
+      button {
+        flex: 1 1 0% !important;
+      }
     }
   }
 }
