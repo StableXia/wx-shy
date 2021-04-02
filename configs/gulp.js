@@ -10,6 +10,20 @@ const buildConfig = {
     copySrc: ["packages/debug/src/**/*.{wxml,json}"],
     dest: "packages/debug/lib",
   },
+  appEnv: {
+    name: "appEnv",
+    options: {
+      base: "packages/app-env/src",
+      allowEmpty: true,
+    },
+    scriptsSrc: "packages/app-env/src/**/*.js",
+    lessSrc: [
+      "packages/app-env/src/**/*.less",
+      "!packages/app-env/src/less/*.*",
+    ],
+    copySrc: ["packages/app-env/src/**/*.{wxml,json}"],
+    dest: "packages/app-env/lib",
+  },
 };
 
 let buildTasks = [];

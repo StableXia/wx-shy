@@ -8,9 +8,9 @@ function formatMessages(messages) {
           return {
             requestUrl: request.url,
             requestMethod: request.method,
-            statusCode: request.statusCode,
-            requestHeaders: request.headers,
-            responseHeaders: response.headers,
+            statusCode: response.statusCode,
+            requestHeaders: request.header,
+            responseHeaders: response.header,
             response: response,
           };
         } catch (error) {

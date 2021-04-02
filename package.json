@@ -16,6 +16,7 @@
     "bootstrap": "yarn && lerna bootstrap --npm-client=yarn",
     "build": "gulp",
     "build:debug": "cross-env target=debug gulp",
+    "build:appEnv": "cross-env target=appEnv gulp",
     "prepublish": "npm run build"
   },
   "devDependencies": {

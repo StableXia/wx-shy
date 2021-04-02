@@ -1,4 +1,5 @@
-import { env, utils, eventBus, EVENT_TYPE } from "@wx-shy/debug";
+import { utils, eventBus, EVENT_TYPE } from "@wx-shy/debug";
+import { getApiHost, getCurrrentApi } from "@wx-shy/app-env";
 
 Component({
   data: {
@@ -7,9 +8,9 @@ Component({
   },
   lifetimes: {
     attached() {
-      let envList = env.getEnv();
+      let envList = getApiHost();
       envList = utils.isObject(envList) ? Object.keys(envList) : [];
-      const currentEnv = env.getCurrentEnv();
+      const currentEnv = getCurrrentApi();
 
       this.setData({
         envList,
