@@ -14,41 +14,37 @@
                 <view class="debug-title">General</view>
                 <view class="debug-layout">
                     <view>URL：</view>
-                    <view class="debug-layout__flex debug-break-word">{{detail.requestUrl}}</view>
+                    <view class="debug-layout__flex debug-pre">{{detail.requestUrl}}</view>
                 </view>
                 <view class="debug-layout">
                     <view>Method：</view>
-                    <view class="debug-layout__flex debug-break-word">
-                        {{detail.requestMethod}}
-                    </view>
+                    <view class="debug-layout__flex debug-pre">{{detail.requestMethod}}</view>
                 </view>
             </view>
             <view class="debug-network-modal__block">
                 <view class="debug-title">Response Headers</view>
                 <view wx:for="{{detail.responseHeaders}}" wx:for-item="value" wx:for-index="key" wx:key="key" class="debug-layout">
                     <view>{{key}}：</view>
-                    <view class="debug-layout__flex debug-break-word">{{value}}</view>
+                    <view class="debug-layout__flex debug-pre">{{value}}</view>
                 </view>
             </view>
             <view class="debug-network-modal__block">
                 <view class="debug-title">Request Headers</view>
                 <view wx:for="{{detail.requestHeaders}}" wx:for-item="value" wx:for-index="key" wx:key="key" class="debug-layout">
                     <view>{{key}}：</view>
-                    <view class="debug-layout__flex debug-break-word">{{value}}</view>
+                    <view class="debug-layout__flex debug-pre">{{value}}</view>
                 </view>
             </view>
             <view class="debug-network-modal__block">
                 <view class="debug-title">Query String Parameters</view>
                 <view class="debug-layout">
-                    <view class="debug-layout__flex debug-break-word">
-                        {{detail.requestParameters}}
-                    </view>
+                    <view class="debug-layout__flex debug-pre">{{detail.requestParameters}}</view>
                 </view>
             </view>
             <view class="debug-network-modal__block">
                 <view class="debug-title">Response</view>
                 <view class="debug-layout">
-                    <view class="debug-layout__flex debug-break-word">{{detail.response}}</view>
+                    <view class="debug-layout__flex debug-pre">{{detail.response}}</view>
                 </view>
             </view>
         </view>

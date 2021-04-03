@@ -11,10 +11,19 @@ export function getApiHost() {
   return getStorage(API_HOST_STORAGE_KEY);
 }
 
-export function setCurrrentApi(data) {
+export function setCurrrentApiHost(data, reset = true) {
+  if (reset) {
+    setStorage(CURRENT_API_HOST_STORAGE_KEY, data);
+    return;
+  }
+
+  if (getCurrrentApiHost()) {
+    return;
+  }
+
   setStorage(CURRENT_API_HOST_STORAGE_KEY, data);
 }
 
-export function getCurrrentApi() {
+export function getCurrrentApiHost() {
   return getStorage(CURRENT_API_HOST_STORAGE_KEY);
 }

@@ -1,16 +1,27 @@
-import { utils, eventBus, EVENT_TYPE } from "@wx-shy/debug";
-import { getApiHost, getCurrrentApi, setCurrrentApi } from "@wx-shy/app-env";
+import {
+  utils,
+  eventBus,
+  EVENT_TYPE,
+  getWXDebugStatus,
+  setEnableWXDebug,
+} from "@wx-shy/debug";
+import {
+  getApiHost,
+  getCurrrentApiHost,
+  setCurrrentApiHost,
+} from "@wx-shy/app-env";
 
 Component({
   data: {
     envList: [],
     currentEnv: -1,
+    wxDebug: getWXDebugStatus(),
   },
   lifetimes: {
     attached() {
       let envList = getApiHost();
       envList = utils.isObject(envList) ? Object.keys(envList) : [];
-      const currentEnv = getCurrrentApi();
+      const currentEnv = getCurrrentApiHost();
 
       this.setData({
         envList,
@@ -25,8 +36,13 @@ Component({
       });
     },
     handleSave() {
-      setCurrrentApi(this.data.envList[this.data.currentEnv]);
+      setCurrrentApiHost(this.data.envList[this.data.currentEnv]);
       eventBus.emit(EVENT_TYPE.close_debug_page);
+    },
+    handleWXDebug(e) {
+      setEnableWXDebug({
+        enableDebug: e.detail.value,
+      });
     },
   },
 });

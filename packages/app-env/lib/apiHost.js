@@ -5,8 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.setApiHost = setApiHost;
 exports.getApiHost = getApiHost;
-exports.setCurrrentApi = setCurrrentApi;
-exports.getCurrrentApi = getCurrrentApi;
+exports.setCurrrentApiHost = setCurrrentApiHost;
+exports.getCurrrentApiHost = getCurrrentApiHost;
 
 var _storage = require("./storage");
 
@@ -21,10 +21,19 @@ function getApiHost() {
   return (0, _storage.getStorage)(API_HOST_STORAGE_KEY);
 }
 
-function setCurrrentApi(data) {
+function setCurrrentApiHost(data, reset = true) {
+  if (reset) {
+    (0, _storage.setStorage)(CURRENT_API_HOST_STORAGE_KEY, data);
+    return;
+  }
+
+  if (getCurrrentApiHost()) {
+    return;
+  }
+
   (0, _storage.setStorage)(CURRENT_API_HOST_STORAGE_KEY, data);
 }
 
-function getCurrrentApi() {
+function getCurrrentApiHost() {
   return (0, _storage.getStorage)(CURRENT_API_HOST_STORAGE_KEY);
 }

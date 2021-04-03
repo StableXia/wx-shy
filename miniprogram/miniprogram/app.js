@@ -1,8 +1,40 @@
+import { start } from "@wx-shy/debug";
+import {
+  getEnv,
+  APP_ENV,
+  setApiHost,
+  getCurrrentApiHost,
+  setCurrrentApiHost,
+} from "@wx-shy/app-env";
+
+const apiHostAllConfigs = {
+  local: {},
+  dev: {},
+  staging: {},
+  prod: {},
+};
+
+setApiHost(apiHostAllConfigs);
+setCurrrentApiHost("local", false);
+start();
+
+function getApiHostConfigs() {
+  const appEnv = getEnv();
+
+  if (appEnv !== APP_ENV.release) {
+    return apiHostAllConfigs[getCurrrentApiHost()];
+  }
+
+  return apiHostAllConfigs.prod;
+}
+
+const apiHostConfigs = getApiHostConfigs();
+
 //app.js
 App({
   onLaunch: function () {
     if (!wx.cloud) {
-      console.error('请使用 2.2.3 或以上的基础库以使用云能力')
+      console.error("请使用 2.2.3 或以上的基础库以使用云能力");
     } else {
       wx.cloud.init({
         // env 参数说明：
@@ -11,9 +43,19 @@ App({
         //   如不填则使用默认环境（第一个创建的环境）
         // env: 'my-env-id',
         traceUser: true,
-      })
+      });
     }
 
-    this.globalData = {}
-  }
-})
+    this.globalData = {};
+
+    wx.request({
+      url:
+        "https://cloud.google.comcloud.google.comcloud.google.comcloud.google.comcloud.google.comcloud.google.comcloud.google.com",
+    });
+
+    wx.request({
+      url:
+        "https://cloud.google.comcloud.google.comcloud.google.comcloud.google.comcloud.google.comcloud.google.comcloud.google.com",
+    });
+  },
+});
