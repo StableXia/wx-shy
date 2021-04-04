@@ -49,13 +49,7 @@ App({
     this.globalData = {};
 
     wx.request({
-      url:
-        "https://cloud.google.comcloud.google.comcloud.google.comcloud.google.comcloud.google.comcloud.google.comcloud.google.com",
-    });
-
-    wx.request({
-      url:
-        "https://cloud.google.comcloud.google.comcloud.google.comcloud.google.comcloud.google.comcloud.google.comcloud.google.com",
+      url: "https://localhost",
     });
   },
 });

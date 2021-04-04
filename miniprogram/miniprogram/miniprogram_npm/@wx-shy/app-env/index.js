@@ -4,7 +4,7 @@ var __DEFINE__ = function(modId, func, req) { var m = { exports: {}, _tempexport
 var __REQUIRE__ = function(modId, source) { if(!__MODS__[modId]) return require(source); if(!__MODS__[modId].status) { var m = __MODS__[modId].m; m._exports = m._tempexports; var desp = Object.getOwnPropertyDescriptor(m, "exports"); if (desp && desp.configurable) Object.defineProperty(m, "exports", { set: function (val) { if(typeof val === "object" && val !== m._exports) { m._exports.__proto__ = val.__proto__; Object.keys(val).forEach(function (k) { m._exports[k] = val[k]; }); } m._tempexports = val }, get: function () { return m._tempexports; } }); __MODS__[modId].status = 1; __MODS__[modId].func(__MODS__[modId].req, m, m.exports); } return __MODS__[modId].m.exports; };
 var __REQUIRE_WILDCARD__ = function(obj) { if(obj && obj.__esModule) { return obj; } else { var newObj = {}; if(obj != null) { for(var k in obj) { if (Object.prototype.hasOwnProperty.call(obj, k)) newObj[k] = obj[k]; } } newObj.default = obj; return newObj; } };
 var __REQUIRE_DEFAULT__ = function(obj) { return obj && obj.__esModule ? obj.default : obj; };
-__DEFINE__(1617378359642, function(require, module, exports) {
+__DEFINE__(1617378359654, function(require, module, exports) {
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -36,8 +36,8 @@ Object.keys(_apiHost).forEach(function (key) {
     }
   });
 });
-}, function(modId) {var map = {"./appEnv":1617378359643,"./apiHost":1617378359644}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1617378359643, function(require, module, exports) {
+}, function(modId) {var map = {"./appEnv":1617378359655,"./apiHost":1617378359656}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1617378359655, function(require, module, exports) {
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -83,7 +83,7 @@ function getEnv(defaultEnv = APP_ENV_RELEASE) {
   return getEnvByWxConfig() || getEnvByAccountInfo() || defaultEnv;
 }
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1617378359644, function(require, module, exports) {
+__DEFINE__(1617378359656, function(require, module, exports) {
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -123,8 +123,8 @@ function setCurrrentApiHost(data, reset = true) {
 function getCurrrentApiHost() {
   return (0, _storage.getStorage)(CURRENT_API_HOST_STORAGE_KEY);
 }
-}, function(modId) { var map = {"./storage":1617378359645}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1617378359645, function(require, module, exports) {
+}, function(modId) { var map = {"./storage":1617378359657}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1617378359657, function(require, module, exports) {
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -151,6 +151,6 @@ function clearStorage() {
   wx.clearStorageSync();
 }
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-return __REQUIRE__(1617378359642);
+return __REQUIRE__(1617378359654);
 })()
 //# sourceMappingURL=index.js.map

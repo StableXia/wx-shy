@@ -2,6 +2,7 @@
   padding: 4px 0;
   display: flex;
   justify-content: space-between;
+  border-bottom: 1px solid #f0f0f0;
 }
 .debug-network__item__url {
   flex: 1 1 0%;
@@ -12,9 +13,6 @@
   color: #fff;
   background-color: rgba(59, 38, 38, 0.6);
   padding: 2px 4px;
-}
-.debug-network__item + .debug-network__item {
-  border-top: 1px solid #f0f0f0;
 }
 .debug-network-modal {
   display: flex;
@@ -48,9 +46,7 @@
 }
 .debug-network-modal__block {
   padding: 8px 0;
-}
-.debug-network-modal__block + .debug-network-modal__block {
-  border-top: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
 }
 .debug-title {
   font-weight: bold;
