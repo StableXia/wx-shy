@@ -4,67 +4,82 @@ const less = require("gulp-less");
 const postcss = require("gulp-postcss");
 const autoprefixer = require("autoprefixer");
 const rename = require("gulp-rename");
-const config = require("./configs/gulp");
+const del = require("del");
+const watch = require("gulp-watch");
+const gulpConfig = require("./configs/gulp");
 
-const buildTasks = config.tasks
-  .map((task) => {
-    const scriptTaskName = `script:${task.name}`;
-    const lessTaskName = `less:${task.name}`;
-    const copyTaskName = `copy:${task.name}`;
+const env = process.env.NODE_ENV;
 
-    gulp.task(scriptTaskName, () => {
-      return gulp
-        .src(task.scriptsSrc, task.options)
-        .pipe(
-          babel({
-            plugins: ["@babel/plugin-transform-modules-commonjs"],
-          })
-        )
-        .pipe(gulp.dest(task.dest));
-    });
+const buildTasks = gulpConfig.tasks.map((task) => {
+  function startTask(done) {
+    console.log();
+    console.log(`Task [${task.name}] starts`);
+    console.log();
+    done();
+  }
+  function endTask(done) {
+    console.log();
+    console.log(`End of task [${task.name}]`);
+    console.log();
+    done();
+  }
+  function cleanTask(done) {
+    del.sync(task.clean);
+    done();
+  }
+  function scriptTask() {
+    return gulp
+      .src(task.scriptsSrc, task.options)
+      .pipe(
+        babel({
+          plugins: ["@babel/plugin-transform-modules-commonjs"],
+        })
+      )
+      .pipe(gulp.dest(task.dest));
+  }
+  function lessTask() {
+    return gulp
+      .src(task.lessSrc, task.options)
+      .pipe(
+        less().on("error", function (e) {
+          console.error(e.message);
+          this.emit("end");
+        })
+      )
+      .pipe(postcss([autoprefixer]))
+      .pipe(
+        rename(function (path) {
+          path.extname = ".wxss";
+        })
+      )
+      .pipe(gulp.dest(task.dest));
+  }
+  function copyTask() {
+    return gulp.src(task.copySrc, task.options).pipe(gulp.dest(task.dest));
+  }
+  function watchTask(done) {
+    watch(task.scriptsSrc, gulp.series(startTask, scriptTask, endTask));
+    watch(task.lessSrc, gulp.series(startTask, lessTask, endTask));
+    watch(task.copySrc, gulp.series(startTask, copyTask, endTask));
+    done();
+  }
 
-    gulp.task(lessTaskName, () => {
-      return gulp
-        .src(task.lessSrc, task.options)
-        .pipe(
-          less().on("error", function (e) {
-            console.error(e.message);
-            this.emit("end");
-          })
-        )
-        .pipe(postcss([autoprefixer]))
-        .pipe(
-          rename(function (path) {
-            path.extname = ".wxss";
-          })
-        )
-        .pipe(gulp.dest(task.dest));
-    });
+  if (env === "production") {
+    return gulp.series(
+      startTask,
+      cleanTask,
+      gulp.parallel(scriptTask, lessTask, copyTask),
+      endTask
+    );
+  }
 
-    gulp.task(copyTaskName, () => {
-      return gulp.src(task.copySrc, task.options).pipe(gulp.dest(task.dest));
-    });
-
-    return [scriptTaskName, lessTaskName, copyTaskName];
-  })
-  .reduce((prev, next) => prev.concat(next), []);
-
-gulp.task("build-watch", () => {
-  config.tasks.forEach((task) => {
-    const scriptTaskName = `script:${task.name}`;
-    const lessTaskName = `less:${task.name}`;
-    const copyTaskName = `copy:${task.name}`;
-
-    gulp.watch(task.copySrc, gulp.series(copyTaskName));
-    gulp.watch(task.scriptsSrc, gulp.series(scriptTaskName));
-    gulp.watch(task.lessSrc, gulp.series(lessTaskName));
-  });
+  return gulp.series(
+    startTask,
+    cleanTask,
+    gulp.parallel(scriptTask, lessTask, copyTask),
+    watchTask,
+    endTask
+  );
 });
 
-const defaultTasks = [gulp.parallel(buildTasks)];
-
-if (process.env.NODE_ENV === "development") {
-  defaultTasks.push("build-watch");
-}
-
-gulp.task("default", gulp.series(...defaultTasks));
+exports.default = gulp.series(...buildTasks);

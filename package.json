@@ -12,11 +12,9 @@
   "license": "MIT",
   "author": "",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development gulp",
+    "dev": "cross-env gulp",
+    "build": "cross-env NODE_ENV=production gulp",
     "bootstrap": "yarn && lerna bootstrap --npm-client=yarn",
-    "build": "gulp",
-    "build:debug": "cross-env target=debug gulp",
-    "build:appEnv": "cross-env target=appEnv gulp",
     "prepublish": "npm run build"
   },
   "devDependencies": {
@@ -24,11 +22,13 @@
     "@babel/plugin-transform-modules-commonjs": "^7.13.8",
     "autoprefixer": "^10.2.5",
     "cross-env": "^7.0.3",
+    "del": "^6.0.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-less": "^4.0.1",
     "gulp-postcss": "^9.0.0",
     "gulp-rename": "^2.0.0",
+    "gulp-watch": "^5.0.1",
     "lerna": "^3.22.1",
     "postcss": "^8.2.8"
   }
