@@ -3,16 +3,17 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.networkProxy = undefined;
 exports.start = start;
 exports.isStarted = isStarted;
-exports.networkProxy = void 0;
 
-var _index = _interopRequireDefault(require("./network/index"));
+var _index = require("./network/index");
+
+var _index2 = _interopRequireDefault(_index);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const networkProxy = new _index.default();
-exports.networkProxy = networkProxy;
+const networkProxy = exports.networkProxy = new _index2.default();
 let started = false;
 
 function start() {

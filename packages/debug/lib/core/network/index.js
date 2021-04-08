@@ -3,9 +3,10 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
 
-var _requestQueue = _interopRequireDefault(require("./requestQueue"));
+var _requestQueue = require("./requestQueue");
+
+var _requestQueue2 = _interopRequireDefault(_requestQueue);
 
 var _constants = require("./constants");
 
@@ -13,7 +14,7 @@ var _utils = require("../utils");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const requestQueue = new _requestQueue.default();
+const requestQueue = new _requestQueue2.default();
 
 function proxyHandler(networkFun, payload) {
   const requestOpts = (0, _utils.isObject)(payload) ? payload : {};

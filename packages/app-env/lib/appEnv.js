@@ -4,19 +4,14 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.getEnv = getEnv;
-exports.APP_ENV = exports.APP_ENV_RELEASE = exports.APP_ENV_TRIAL = exports.APP_ENV_DEVELOP = void 0;
-const APP_ENV_DEVELOP = "develop";
-exports.APP_ENV_DEVELOP = APP_ENV_DEVELOP;
-const APP_ENV_TRIAL = "trial";
-exports.APP_ENV_TRIAL = APP_ENV_TRIAL;
-const APP_ENV_RELEASE = "release";
-exports.APP_ENV_RELEASE = APP_ENV_RELEASE;
-const APP_ENV = {
+const APP_ENV_DEVELOP = exports.APP_ENV_DEVELOP = "develop";
+const APP_ENV_TRIAL = exports.APP_ENV_TRIAL = "trial";
+const APP_ENV_RELEASE = exports.APP_ENV_RELEASE = "release";
+const APP_ENV = exports.APP_ENV = {
   develop: APP_ENV_DEVELOP,
   trial: APP_ENV_TRIAL,
   release: APP_ENV_RELEASE
 };
-exports.APP_ENV = APP_ENV;
 
 function getEnvByWxConfig() {
   try {
