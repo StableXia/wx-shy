@@ -12,12 +12,13 @@
   "license": "MIT",
   "author": "",
   "scripts": {
-    "dev": "cross-env gulp",
+    "dev:debug": "cross-env TASK_NAME=debug gulp",
+    "dev:env": "cross-env TASK_NAME=appEnv gulp",
     "dev:ci": "tsc --watch",
-    "build": "cross-env NODE_ENV=production gulp",
+    "build:debug": "cross-env NODE_ENV=production TASK_NAME=debug gulp",
+    "build:env": "cross-env NODE_ENV=production TASK_NAME=appEnv gulp",
     "build:ci": "tsc",
     "bootstrap": "yarn && lerna bootstrap --npm-client=yarn",
-    "prepublish": "npm run build && npm run build:ci",
     "test": "jest -c ./configs/jest.js"
   },
   "devDependencies": {

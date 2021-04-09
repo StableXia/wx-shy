@@ -6,11 +6,11 @@ const autoprefixer = require("autoprefixer");
 const rename = require("gulp-rename");
 const del = require("del");
 const watch = require("gulp-watch");
-const gulpConfig = require("./configs/gulp");
+const { gulpTasks } = require("./configs/gulp");
 
 const env = process.env.NODE_ENV;
 
-const buildTasks = gulpConfig.tasks.map((task) => {
+const buildTasks = gulpTasks.map((task) => {
   function startTask(done) {
     console.log();
     console.log(`Task [${task.name}] starts`);
