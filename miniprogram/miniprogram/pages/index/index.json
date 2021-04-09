@@ -1,5 +1,0 @@
-{
-  "usingComponents": {
-    "w-debug": "@wx-shy/debug/ui/debug"
-  }
-}

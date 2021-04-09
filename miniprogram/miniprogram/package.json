@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "@wx-shy/debug": "/usr/local/lib/node_modules/@wx-shy/debug",
-    "@wx-shy/app-env": "/usr/local/lib/node_modules/@wx-shy/app-env"
-  }
-}
