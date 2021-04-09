@@ -34,7 +34,9 @@
         "url": "https://github.com/xiaotangdou/wx-shy/issues"
     },
     "dependencies": {
+        "chalk": "^4.1.0",
         "commander": "^7.2.0",
-        "miniprogram-ci": "^1.2.3"
+        "miniprogram-ci": "^1.2.3",
+        "ora": "^5.4.0"
     }
 }

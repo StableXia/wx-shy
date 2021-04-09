@@ -29,15 +29,6 @@ function upload() {
             qrcodeOutputDest: path.resolve(__dirname, "../qrcodes/qrcode.jpg"),
             onProgressUpdate: console.log,
         });
-        const uploadResult = yield ci.upload({
-            project,
-            version: "0.0.1",
-            desc: "测试版本",
-            setting: {
-                es6: true,
-            },
-            onProgressUpdate: console.log,
-        });
     });
 }
 upload();
