@@ -1,44 +1,52 @@
 import path from "path";
 import ci from "miniprogram-ci";
 import { assertExists, getProjectConfig } from "./utils";
-import { log } from "./view";
+import { IProjectConfig, IOptions } from "./types";
 
-interface IOptions {
-  workspace: string;
-}
-
-log.error("[project.config.json] 获取失败");
+const DEFAULT_WORKSPACE = "./";
 
 class Shyci {
   private workspace: string;
   project: ci.Project;
-  projectConfig;
+  projectConfig: IProjectConfig;
 
-  constructor(options: IOptions) {
+  constructor(options: IOptions = {}) {
+    this.workspace = options.workspace || DEFAULT_WORKSPACE;
+
     assertExists(
-      path.join(options.workspace, "project.config.json"),
+      path.join(this.workspace, "project.config.json"),
       "[project.config.json] 不存在"
     );
 
-    this.workspace = options.workspace;
-    this.projectConfig = getProjectConfig(
-      path.join(options.workspace, "project.config.json")
+    this.projectConfig = this.createProjectConfig(options);
+    this.project = this.createProject();
+  }
+
+  private createProjectConfig(options: IOptions) {
+    const sourceProjectConfig = getProjectConfig(
+      path.join(this.workspace, "project.config.json")
     );
 
-    this.project = this.createProject();
+    return {
+      appid: sourceProjectConfig.appid,
+      setting: sourceProjectConfig.setting,
+      ignores: ["node_modules/**/*"],
+      projectPath: options.workspace || "./",
+      privateKeyPath: options.pkp,
+      type: options.type,
+      qrcodeFormat: options.qrcodeFormat,
+      qrcodeOutputDest: options.qrcodeOutputDest,
+    };
   }
 
   private createProject() {
     try {
       return new ci.Project({
         appid: this.projectConfig.appid,
-        type: "miniProgram",
-        projectPath: path.resolve(__dirname, "../"),
-        privateKeyPath: path.resolve(
-          __dirname,
-          "../private.wx01ddfcc465fe577a.key"
-        ),
-        ignores: ["node_modules/**/*"],
+        projectPath: this.projectConfig.projectPath,
+        privateKeyPath: this.projectConfig.privateKeyPath,
+        type: this.projectConfig.type,
+        ignores: this.projectConfig.ignores,
       });
     } catch (error) {
       throw error;
@@ -47,14 +55,11 @@ class Shyci {
 
   async upload() {
     try {
-      const uploadResult = await ci.upload({
+      await ci.upload({
         project: this.project,
         version: "0.0.1",
         desc: "测试版本",
-        setting: {
-          es6: true,
-        },
-        onProgressUpdate: console.log,
+        setting: this.projectConfig.setting,
       });
     } catch (error) {
       throw error;
@@ -63,16 +68,17 @@ class Shyci {
 
   async preview() {
     try {
-      const previewResult = await ci.preview({
-        project,
+      await ci.preview({
+        project: this.project,
+        version: "0.0.1",
         desc: "测试版本",
-        setting: {
-          es6: true,
-        },
-        qrcodeFormat: "image",
-        qrcodeOutputDest: path.resolve(__dirname, "../qrcodes/qrcode.jpg"),
-        onProgressUpdate: console.log,
+        qrcodeFormat: this.projectConfig.qrcodeFormat,
+        qrcodeOutputDest: this.projectConfig.qrcodeOutputDest,
       });
-    } catch (error) {}
+    } catch (error) {
+      throw error;
+    }
   }
 }
+
+export default Shyci;

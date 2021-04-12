@@ -2,6 +2,7 @@
 
 import commander from "commander";
 import packageJson from "../package.json";
+import Shyci from "./shyci";
 
 commander
   .version(packageJson.version, "-v, --version")
@@ -10,16 +11,21 @@ commander
 
 commander
   .command("upload [workspace]")
-  .option("--env [value]", "环境类型, 例如 dev|test|prod")
   .option("--type [value]", "项目类型", "miniProgram")
-  .option("--version [value]", "发布版本号")
-  .option("--desc [value]", "发布简介")
-  .option("--pkp [value]", "私钥文件所在路径")
-  .option("--proxy [value]", "代理url")
-  .option("--robot [value]", "指定CI机器人，1 ~ 30", "1")
+  .requiredOption("--pkp [value]", "私钥文件所在路径")
+  .option(
+    "--qrcodeFormat [value]",
+    "二维码文件的格式: terminal|base64|image",
+    "image"
+  )
+  .option("--qrcodeOutputDest [value]", "二维码文件保存路径 ")
   .description("小程序上传")
   .action((workspace, options) => {
     console.log(workspace, options);
+    new Shyci({
+      workspace,
+      ...options,
+    });
   });
 
 commander.parseAsync(process.argv);
