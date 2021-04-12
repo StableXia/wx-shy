@@ -8,10 +8,10 @@ export type IQrcodeFormat = "terminal" | "image" | "base64";
 
 export interface IOptions {
   workspace?: string;
-  type: IType;
+  type?: IType;
   pkp: string;
-  qrcodeFormat: IQrcodeFormat;
-  qrcodeOutputDest: string;
+  qrcodeFormat?: IQrcodeFormat;
+  qrcodeOutputDest?: string;
 }
 
 export interface IProjectConfig {

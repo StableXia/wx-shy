@@ -10,7 +10,7 @@ class Shyci {
   project: ci.Project;
   projectConfig: IProjectConfig;
 
-  constructor(options: IOptions = {}) {
+  constructor(options: IOptions) {
     this.workspace = options.workspace || DEFAULT_WORKSPACE;
 
     assertExists(
@@ -33,9 +33,9 @@ class Shyci {
       ignores: ["node_modules/**/*"],
       projectPath: options.workspace || "./",
       privateKeyPath: options.pkp,
-      type: options.type,
-      qrcodeFormat: options.qrcodeFormat,
-      qrcodeOutputDest: options.qrcodeOutputDest,
+      type: options.type || "miniProgram",
+      qrcodeFormat: options.qrcodeFormat || "image",
+      qrcodeOutputDest: options.qrcodeOutputDest || this.workspace,
     };
   }
 
