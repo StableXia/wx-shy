@@ -4,7 +4,7 @@ import {
   EVENT_TYPE,
   getWXDebugStatus,
   setEnableWXDebug,
-} from "@wx-shy/debug";
+} from "../../";
 import {
   getApiHost,
   getCurrrentApiHost,

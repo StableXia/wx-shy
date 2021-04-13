@@ -1,4 +1,4 @@
-import { eventBus, EVENT_TYPE } from "@wx-shy/debug";
+import { eventBus, EVENT_TYPE } from "../../";
 
 Component({
   methods: {

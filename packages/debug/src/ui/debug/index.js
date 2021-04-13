@@ -1,4 +1,4 @@
-import { eventBus, EVENT_TYPE, isStarted } from "@wx-shy/debug";
+import { eventBus, EVENT_TYPE, isStarted } from "../../";
 
 const animateClassName = {
   fadeIn: "fadeIn",

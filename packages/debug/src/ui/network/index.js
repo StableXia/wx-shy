@@ -1,4 +1,4 @@
-import { networkProxy } from "@wx-shy/debug";
+import { networkProxy } from "../../";
 
 const DEFAULT_DETAIL = {
   requestUrl: null,

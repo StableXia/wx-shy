@@ -1,5 +1,4 @@
-import jest from "../../../../configs/jest";
-import Event from "../../src/core/event";
+import Event from "../src/core/event";
 
 const event = new Event();
 const mockFn = jest.fn();

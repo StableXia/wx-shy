@@ -31,5 +31,8 @@
   "bugs": {
     "url": "https://github.com/xiaotangdou/wx-shy/issues"
   },
-  "gitHead": "f4f37fb8e233106dd77fb6e22b8e9fc80c8326c6"
+  "gitHead": "f4f37fb8e233106dd77fb6e22b8e9fc80c8326c6",
+  "dependencies": {
+    "@wx-shy/app-env": "^0.0.2"
+  }
 }
