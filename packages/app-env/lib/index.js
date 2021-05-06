@@ -3,27 +3,34 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.getEnv = getEnv;
+const APP_ENV = exports.APP_ENV = {
+  develop: "develop",
+  trial: "trial",
+  release: "release"
+};
 
-var _appEnv = require("./appEnv");
+function getEnvByWxConfig() {
+  try {
+    return __wxConfig.envVersion;
+  } catch (error) {
+    return null;
+  }
+}
 
-Object.keys(_appEnv).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _appEnv[key];
-    }
-  });
-});
+function getEnvByAccountInfo() {
+  try {
+    const accountInfo = wx.getAccountInfoSync();
+    return accountInfo.miniProgram.envVersion;
+  } catch (error) {
+    return null;
+  }
+}
+/**
+ * 获取当前环境变量
+ */
 
-var _apiHost = require("./apiHost");
 
-Object.keys(_apiHost).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function () {
-      return _apiHost[key];
-    }
-  });
-});
+function getEnv() {
+  return getEnvByWxConfig() || getEnvByAccountInfo();
+}
