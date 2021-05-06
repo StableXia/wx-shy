@@ -1,6 +1,5 @@
-import { getWXDebugStatus, setEnableWXDebug } from "../../core/wxDebug";
 import { eventBus, EVENT_TYPE } from "../../core/event";
-import { isObject } from "../../core/utils";
+import { isObject, getWXDebugStatus, setEnableWXDebug } from "../../core/utils";
 import {
   getApiHost,
   getCurrrentApiHost,

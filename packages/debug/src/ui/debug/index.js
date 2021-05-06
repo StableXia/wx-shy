@@ -1,5 +1,6 @@
 import { isStarted } from "../../core/start";
 import { eventBus, EVENT_TYPE } from "../../core/event";
+import { showTabBar, hideTabBar } from "../../core/utils";
 
 const animateClassName = {
   fadeIn: "fadeIn",
@@ -24,7 +25,7 @@ const tabs = [
   },
 ];
 
-let debugSize = { width: 0, height: 0 };
+let debugSize = { width: 62, height: 30 };
 
 Component({
   data: {
@@ -47,14 +48,13 @@ Component({
     debugLaunch: isStarted(),
   },
   lifetimes: {
-    async attached() {
+    attached() {
       if (!isStarted()) {
         return;
       }
 
       this.addListeners();
 
-      debugSize = await this.getDebugSize();
       const { windowWidth, windowHeight } = wx.getSystemInfoSync();
 
       this.setData({
@@ -63,8 +63,8 @@ Component({
           height: windowHeight,
         },
         position: {
-          left: windowWidth - debugSize.width - 16,
-          top: windowHeight - debugSize.height - 16,
+          left: windowWidth - 62 - 16,
+          top: windowHeight - 30 - 16,
         },
       });
     },
@@ -85,6 +85,7 @@ Component({
         this.handleCloseModal.bind(this)
       );
     },
+    // TODO: debug 控件尺寸同步获取
     getDebugSize() {
       return new Promise((resolve) => {
         this.createSelectorQuery()
@@ -123,6 +124,7 @@ Component({
       });
     },
     handleShowModal() {
+      hideTabBar();
       this.setData({
         animateClassName: {
           fade: animateClassName.fadeIn,
@@ -132,6 +134,7 @@ Component({
       });
     },
     handleCloseModal() {
+      showTabBar();
       this.setData({
         animateClassName: {
           fade: animateClassName.fadeOut,

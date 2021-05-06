@@ -4,12 +4,11 @@
 
 ```js
 import {
-  getEnv,
-  APP_ENV,
   setApiHost,
   getCurrrentApiHost,
-  setCurrrentApiHost,
-} from "@wx-shy/app-env";
+  setDefaultApiHost,
+} from "@wx-shy/debug";
+import { getEnv, APP_ENV } from "@wx-shy/app-env";
 
 /**
  * @description api 环境枚举
@@ -44,8 +43,7 @@ export const API_HOST_ALL_CONFIGS = {
   [API_HOST_ENV.production]: API_HOST_PRODUCTION_CONFIGS,
 };
 
-// 设置当前环境的api
-setCurrrentApiHost(API_HOST_ENV.test, false);
+setDefaultApiHost(API_HOST_ENV.test);
 setApiHost(API_HOST_ALL_CONFIGS);
 
 function getApiHostConfigs() {

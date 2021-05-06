@@ -1,7 +1,5 @@
 "use strict";
 
-var _wxDebug = require("../../core/wxDebug");
-
 var _event = require("../../core/event");
 
 var _utils = require("../../core/utils");
@@ -12,7 +10,7 @@ Component({
   data: {
     envList: [],
     currentEnv: -1,
-    wxDebug: (0, _wxDebug.getWXDebugStatus)()
+    wxDebug: (0, _utils.getWXDebugStatus)()
   },
   lifetimes: {
     attached() {
@@ -40,7 +38,7 @@ Component({
     },
 
     handleWXDebug(e) {
-      (0, _wxDebug.setEnableWXDebug)({
+      (0, _utils.setEnableWXDebug)({
         enableDebug: e.detail.value
       });
     }

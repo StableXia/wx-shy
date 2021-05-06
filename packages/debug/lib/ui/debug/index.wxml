@@ -1,5 +1,5 @@
 <view class="debug-wrapper" wx:if="{{debugLaunch}}">
-    <view id="__debug__" style="left: {{position.left}}px; top: {{position.top}}px" class="debug-lancher" catchtouchmove="handleTouchMove" bindtap="handleShowModal">
+    <view id="__debug__" style="left: {{position.left}}px; top: {{position.top}}px;" class="debug-lancher" catchtouchmove="handleTouchMove" bindtap="handleShowModal">
         debug
     </view>
     <view class="debug-modal animated {{animateClassName.fade}} {{animateClassName.slide}}" wx:if="{{showModal}}">

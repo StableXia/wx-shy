@@ -4,6 +4,8 @@ var _start = require("../../core/start");
 
 var _event = require("../../core/event");
 
+var _utils = require("../../core/utils");
+
 const animateClassName = {
   fadeIn: "fadeIn",
   fadeOut: "fadeOut",
@@ -22,8 +24,8 @@ const tabs = [{
   label: "setting"
 }];
 let debugSize = {
-  width: 0,
-  height: 0
+  width: 62,
+  height: 30
 };
 Component({
   data: {
@@ -46,13 +48,12 @@ Component({
     debugLaunch: (0, _start.isStarted)()
   },
   lifetimes: {
-    async attached() {
+    attached() {
       if (!(0, _start.isStarted)()) {
         return;
       }
 
       this.addListeners();
-      debugSize = await this.getDebugSize();
       const {
         windowWidth,
         windowHeight
@@ -63,8 +64,8 @@ Component({
           height: windowHeight
         },
         position: {
-          left: windowWidth - debugSize.width - 16,
-          top: windowHeight - debugSize.height - 16
+          left: windowWidth - 62 - 16,
+          top: windowHeight - 30 - 16
         }
       });
     },
@@ -83,6 +84,7 @@ Component({
       _event.eventBus.off(_event.EVENT_TYPE.close_debug_page, this.handleCloseModal.bind(this));
     },
 
+    // TODO: debug 控件尺寸同步获取
     getDebugSize() {
       return new Promise(resolve => {
         this.createSelectorQuery().select("#__debug__").boundingClientRect(function (res) {
@@ -121,6 +123,7 @@ Component({
     },
 
     handleShowModal() {
+      (0, _utils.hideTabBar)();
       this.setData({
         animateClassName: {
           fade: animateClassName.fadeIn,
@@ -131,6 +134,7 @@ Component({
     },
 
     handleCloseModal() {
+      (0, _utils.showTabBar)();
       this.setData({
         animateClassName: {
           fade: animateClassName.fadeOut,
