@@ -16,8 +16,8 @@ export function setDefaultApiHost(data) {
   setStorage(DEFAULT_API_HOST_STORAGE_KEY, data);
 }
 
-export function getDefaultApiHost(data) {
-  getStorage(DEFAULT_API_HOST_STORAGE_KEY, data);
+export function getDefaultApiHost() {
+  return getStorage(DEFAULT_API_HOST_STORAGE_KEY);
 }
 
 export function setCurrrentApiHost(data) {
@@ -25,5 +25,5 @@ export function setCurrrentApiHost(data) {
 }
 
 export function getCurrrentApiHost() {
-  return getStorage(CURRENT_API_HOST_STORAGE_KEY);
+  return getStorage(CURRENT_API_HOST_STORAGE_KEY) || getDefaultApiHost();
 }

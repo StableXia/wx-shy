@@ -1,4 +1,4 @@
-import { isStarted } from "../../";
+import { isStarted } from "../../core/start";
 import { eventBus, EVENT_TYPE } from "../../core/event";
 
 const animateClassName = {

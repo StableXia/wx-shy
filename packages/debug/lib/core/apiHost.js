@@ -28,8 +28,8 @@ function setDefaultApiHost(data) {
   (0, _storage.setStorage)(DEFAULT_API_HOST_STORAGE_KEY, data);
 }
 
-function getDefaultApiHost(data) {
-  (0, _storage.getStorage)(DEFAULT_API_HOST_STORAGE_KEY, data);
+function getDefaultApiHost() {
+  return (0, _storage.getStorage)(DEFAULT_API_HOST_STORAGE_KEY);
 }
 
 function setCurrrentApiHost(data) {
@@ -37,5 +37,5 @@ function setCurrrentApiHost(data) {
 }
 
 function getCurrrentApiHost() {
-  return (0, _storage.getStorage)(CURRENT_API_HOST_STORAGE_KEY);
+  return (0, _storage.getStorage)(CURRENT_API_HOST_STORAGE_KEY) || getDefaultApiHost();
 }

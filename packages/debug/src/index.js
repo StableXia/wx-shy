@@ -1,2 +1,2 @@
-export { start, isStarted } from "./core/init";
+export { start, isStarted } from "./core/start";
 export * from "./core/apiHost";

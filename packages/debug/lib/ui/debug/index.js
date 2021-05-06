@@ -1,6 +1,6 @@
 "use strict";
 
-var _ = require("../../");
+var _start = require("../../core/start");
 
 var _event = require("../../core/event");
 
@@ -43,11 +43,11 @@ Component({
       slide: animateClassName.slideInUp
     },
     activeTab: TABS_MAP.SETTING,
-    debugLaunch: (0, _.isStarted)()
+    debugLaunch: (0, _start.isStarted)()
   },
   lifetimes: {
     async attached() {
-      if (!(0, _.isStarted)()) {
+      if (!(0, _start.isStarted)()) {
         return;
       }
 

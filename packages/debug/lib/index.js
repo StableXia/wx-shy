@@ -4,18 +4,18 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _init = require("./core/init");
+var _start = require("./core/start");
 
 Object.defineProperty(exports, "start", {
   enumerable: true,
   get: function () {
-    return _init.start;
+    return _start.start;
   }
 });
 Object.defineProperty(exports, "isStarted", {
   enumerable: true,
   get: function () {
-    return _init.isStarted;
+    return _start.isStarted;
   }
 });
 

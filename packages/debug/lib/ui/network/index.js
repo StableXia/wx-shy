@@ -1,6 +1,6 @@
 "use strict";
 
-var _network = require("../../core/network");
+var _index = require("../../core/network/index");
 
 const DEFAULT_DETAIL = {
   requestUrl: null,
@@ -32,14 +32,14 @@ Component({
   lifetimes: {
     attached() {
       this.setData({
-        logs: _network.networkProxy.getLogs()
+        logs: _index.networkProxy.getLogs()
       });
     }
 
   },
   methods: {
     handleClear() {
-      _network.networkProxy.clearLogs();
+      _index.networkProxy.clearLogs();
 
       this.setData({
         logs: []
