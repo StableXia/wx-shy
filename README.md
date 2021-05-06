@@ -1,3 +1,11 @@
-# wx-sy
+# wx-shy
 
-商鞅变法前，秦国各地度量衡不统一。为了保证国家的赋税收入，商鞅制造了标准的度量衡器，如今传世之“商鞅量”。
+微信小程序工具链
+
+### wx-debug
+
+可以再非开发环境查看 network、api 切换。[文档链接](https://github.com/xiaotangdou/wx-shy/tree/main/packages/debug)
+
+### app-env
+
+获取小程序当前运行环境。[文档链接](https://github.com/xiaotangdou/wx-shy/tree/main/packages/app-env)
