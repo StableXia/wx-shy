@@ -1,11 +1,7 @@
-export const APP_ENV_DEVELOP = "develop";
-export const APP_ENV_TRIAL = "trial";
-export const APP_ENV_RELEASE = "release";
-
 export const APP_ENV = {
-  develop: APP_ENV_DEVELOP,
-  trial: APP_ENV_TRIAL,
-  release: APP_ENV_RELEASE,
+  develop: "develop",
+  trial: "trial",
+  release: "release",
 };
 
 function getEnvByWxConfig() {
@@ -28,6 +24,6 @@ function getEnvByAccountInfo() {
 /**
  * 获取当前环境变量
  */
-export function getEnv(defaultEnv = APP_ENV_RELEASE) {
-  return getEnvByWxConfig() || getEnvByAccountInfo() || defaultEnv;
+export function getEnv() {
+  return getEnvByWxConfig() || getEnvByAccountInfo();
 }

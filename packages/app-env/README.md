@@ -13,7 +13,7 @@ npm install @wx-shy/app-env
 ```js
 import { getEnv } from "@wx-shy/app-env";
 
-// 获取小程序当前发布环境：develop、staging、release, 默认 release
+// 获取小程序当前发布环境：develop、staging、release
 const appEnv = getEnv();
 ```
 
@@ -31,7 +31,7 @@ const appEnv = getEnv();
     <tr>
         <td>getEnv</td>
         <td>function</td>
-        <td>获取小程序当前发布环境：develop、staging、release, 默认 release</td>
+        <td>获取小程序当前发布环境：develop、staging、release</td>
         <td>-</td>
     </tr>
     <tr>
