@@ -1,4 +1,4 @@
-import { networkProxy } from "../../";
+import { networkProxy } from "../../core/network";
 
 const DEFAULT_DETAIL = {
   requestUrl: null,

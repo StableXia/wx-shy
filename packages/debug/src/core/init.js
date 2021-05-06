@@ -1,6 +1,4 @@
-import NetworkProxy from "./network/index";
-
-export const networkProxy = new NetworkProxy();
+import { networkProxy } from "./network/index";
 
 let started = false;
 export function start() {

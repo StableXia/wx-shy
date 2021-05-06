@@ -1,15 +1,11 @@
-import {
-  utils,
-  eventBus,
-  EVENT_TYPE,
-  getWXDebugStatus,
-  setEnableWXDebug,
-} from "../../";
+import { getWXDebugStatus, setEnableWXDebug } from "../../core/wxDebug";
+import { eventBus, EVENT_TYPE } from "../../core/event";
+import { isObject } from "../../core/utils";
 import {
   getApiHost,
   getCurrrentApiHost,
   setCurrrentApiHost,
-} from "@wx-shy/app-env";
+} from "../../core/apiHost";
 
 Component({
   data: {
@@ -20,7 +16,7 @@ Component({
   lifetimes: {
     attached() {
       let envList = getApiHost();
-      envList = utils.isObject(envList) ? Object.keys(envList) : [];
+      envList = isObject(envList) ? Object.keys(envList) : [];
       const currentEnv = getCurrrentApiHost();
 
       this.setData({

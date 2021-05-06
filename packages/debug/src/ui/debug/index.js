@@ -1,4 +1,5 @@
-import { eventBus, EVENT_TYPE, isStarted } from "../../";
+import { isStarted } from "../../";
+import { eventBus, EVENT_TYPE } from "../../core/event";
 
 const animateClassName = {
   fadeIn: "fadeIn",

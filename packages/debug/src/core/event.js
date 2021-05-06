@@ -1,11 +1,6 @@
 import { isObject } from "./utils";
 
-export const EVENT_TYPE = {
-  close_debug_page: 1,
-  network_fetch: 2,
-};
-
-export default class Event {
+class Event {
   constructor() {
     this._fns = {};
   }
@@ -68,3 +63,10 @@ export default class Event {
     }
   }
 }
+
+export const EVENT_TYPE = {
+  close_debug_page: 1,
+  network_fetch: 2,
+};
+
+export const eventBus = new Event();

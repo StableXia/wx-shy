@@ -1,4 +1,4 @@
-import { eventBus, EVENT_TYPE } from "../../";
+import { eventBus, EVENT_TYPE } from "../../core/event";
 
 Component({
   methods: {

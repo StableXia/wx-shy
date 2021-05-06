@@ -33,7 +33,7 @@ function proxyHandler(networkFun, payload) {
   return networkFun(proxyOpts);
 }
 
-export default class NetworkProxy {
+class NetworkProxy {
   constructor() {
     this._networkCallee = NETWORK_CALLEE;
   }
@@ -56,3 +56,5 @@ export default class NetworkProxy {
     requestQueue.clear();
   }
 }
+
+export const networkProxy = new NetworkProxy();
