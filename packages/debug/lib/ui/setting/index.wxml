@@ -1,0 +1,12 @@
+<layout class="debug-setting">
+    <text slot="header" bindtap="handleSave">save</text>
+    <view class="debug-setting__item">
+        <picker range="{{envList}}" bindchange="handleOk" value="{{currentEnv}}">
+            <view class="picker">ENV：{{envList[currentEnv]}}</view>
+        </picker>
+    </view>
+    <view class="debug-setting__item">
+        <text>wx debug：</text>
+        <switch checked="{{wxDebug}}" bindchange="handleWXDebug" />
+    </view>
+</layout>

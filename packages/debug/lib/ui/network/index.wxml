@@ -1,0 +1,52 @@
+<layout class="debug-network">
+    <text slot="header" bindtap="handleClear">clear</text>
+    <view wx:for="{{logs}}" wx:key="index" class="debug-network__item" bindtap="handleShowDetail" data-detail="{{item}}">
+        <text class="debug-network__item__url">{{item.requestUrl}}</text>
+        <text class="debug-network__item__code">{{item.statusCode || 'Error'}}</text>
+    </view>
+    <view class="debug-network-modal" hidden="{{!showDetail}}">
+        <view class="debug-network-modal__header">
+            <text class="debug-network-modal__close" bindtap="handleClose">×</text>
+            <text bindtap="handleCopy">copy</text>
+        </view>
+        <view class="debug-network-modal__body">
+            <view class="debug-network-modal__block">
+                <view class="debug-title">General</view>
+                <view class="debug-layout">
+                    <view>URL：</view>
+                    <view class="debug-layout__flex debug-pre">{{detail.requestUrl}}</view>
+                </view>
+                <view class="debug-layout">
+                    <view>Method：</view>
+                    <view class="debug-layout__flex debug-pre">{{detail.requestMethod}}</view>
+                </view>
+            </view>
+            <view class="debug-network-modal__block">
+                <view class="debug-title">Response Headers</view>
+                <view wx:for="{{detail.responseHeaders}}" wx:for-item="value" wx:for-index="key" wx:key="key" class="debug-layout">
+                    <view>{{key}}：</view>
+                    <view class="debug-layout__flex debug-pre">{{value}}</view>
+                </view>
+            </view>
+            <view class="debug-network-modal__block">
+                <view class="debug-title">Request Headers</view>
+                <view wx:for="{{detail.requestHeaders}}" wx:for-item="value" wx:for-index="key" wx:key="key" class="debug-layout">
+                    <view>{{key}}：</view>
+                    <view class="debug-layout__flex debug-pre">{{value}}</view>
+                </view>
+            </view>
+            <view class="debug-network-modal__block">
+                <view class="debug-title">Query String Parameters</view>
+                <view class="debug-layout">
+                    <view class="debug-layout__flex debug-pre">{{detail.requestParameters}}</view>
+                </view>
+            </view>
+            <view class="debug-network-modal__block">
+                <view class="debug-title">Response</view>
+                <view class="debug-layout">
+                    <view class="debug-layout__flex debug-pre">{{detail.response}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</layout>
