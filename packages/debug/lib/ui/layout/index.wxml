@@ -1,9 +1,0 @@
-<view class="debug-layout">
-    <view class="debug-layout__header">
-        <close></close>
-        <slot name="header"></slot>
-    </view>
-    <view class="debug-layout__body">
-        <slot></slot>
-    </view>
-</view>
