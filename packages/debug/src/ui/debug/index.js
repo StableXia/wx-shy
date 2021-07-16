@@ -1,6 +1,7 @@
 import { isStarted } from "../../core/start";
 import { eventBus, EVENT_TYPE } from "../../core/event";
 import { showTabBar, hideTabBar } from "../../core/utils";
+import { getCurrrentApiHost } from "../../core/apiHost";
 
 const animateClassName = {
   fadeIn: "fadeIn",
@@ -25,12 +26,16 @@ const tabs = [
   },
 ];
 
-let debugSize = { width: 62, height: 30 };
+const DEBUG_TEXT = "debug";
+
+const boundary = 16;
+let debugSize = { width: 76, height: 36 };
 
 Component({
   data: {
     tabs,
     TABS_MAP,
+    debugText: DEBUG_TEXT,
     position: {
       left: 0,
       top: 0,
@@ -55,6 +60,7 @@ Component({
 
       this.addListeners();
 
+      const currentEnv = getCurrrentApiHost();
       const { windowWidth, windowHeight } = wx.getSystemInfoSync();
 
       this.setData({
@@ -63,9 +69,10 @@ Component({
           height: windowHeight,
         },
         position: {
-          left: windowWidth - 62 - 16,
-          top: windowHeight - 30 - 16,
+          left: windowWidth - debugSize.width - boundary,
+          top: windowHeight - debugSize.height - boundary - windowWidth / 2,
         },
+        debugText: currentEnv,
       });
     },
     detached() {
@@ -105,15 +112,15 @@ Component({
       const windowWidth = windowSize.width;
       const windowHeight = windowSize.height;
 
-      let l = Math.max(touch.clientX, 16);
-      let t = Math.max(touch.clientY, 16);
+      let l = Math.max(touch.clientX, boundary);
+      let t = Math.max(touch.clientY, boundary);
 
-      if (l + debugSize.width + 16 > windowWidth) {
-        l = windowWidth - 16 - debugSize.width;
+      if (l + debugSize.width + boundary > windowWidth) {
+        l = windowWidth - boundary - debugSize.width;
       }
 
-      if (t + debugSize.height + 16 > windowHeight) {
-        t = windowHeight - 16 - debugSize.height;
+      if (t + debugSize.height + boundary > windowHeight) {
+        t = windowHeight - boundary - debugSize.height;
       }
 
       this.setData({
